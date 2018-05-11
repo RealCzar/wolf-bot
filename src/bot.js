@@ -35,6 +35,7 @@ client.on('message', message => {
           .setDescription("Player kicked")
           .setColor('#FF0000')
           .addField("Kicked user", `${kickee} with ID ${kickee.id}`)
+          .addField('Kicked by', `${message.author}`)
           .addField('Kicked in', message.channel)
           .addField('Time', message.createdAt)
           .addField('Reason', kReason);
@@ -44,7 +45,7 @@ client.on('message', message => {
           message.reply('ERROR: Cannot find \"incidents\" channel.');
         } else {
           kickChannel.send(kRichEmbed);
-          kickee.kick(kReason);
+          message.guild.member(kickee).kick(kReason);
         }
       }
     }
