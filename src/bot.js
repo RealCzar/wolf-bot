@@ -30,7 +30,7 @@ client.on('message', message => {
       if(!message.member.hasPermission("KICK_MEMBERS")) {
         message.reply('I can\'t do that for you, pal!');
       } else {
-        kReason = args.join(" ").slice(22);
+        let kReason = args.join(" ").slice(22);
         let kRichEmbed = new Discord.RichEmbed()
           .setDescription("Player kicked")
           .setColor('#FF0000')
