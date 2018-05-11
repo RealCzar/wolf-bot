@@ -21,7 +21,7 @@ client.on('message', message => {
 
   if(cmd === prefix + "hello") {
     message.reply("hello!");
-  } else if (cmd === prefix + "ban") {
+  } else if (cmd === prefix + "kick") {
     let kickee = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 
     if(!kickee) {
@@ -30,18 +30,21 @@ client.on('message', message => {
       if(!message.member.hasPermission("KICK_MEMBERS")) {
         message.reply('I can\'t do that for you, pal!');
       } else {
+        kReason = args.join(" ").slice(22);
         let kRichEmbed = new Discord.RichEmbed()
           .setDescription("Player kicked")
           .setColor('#FF0000')
           .addField("Kicked user", `${kickee} with ID ${kickee.id}`)
           .addField('Kicked in', message.channel)
-          .addField('Time', message.createdAt);
+          .addField('Time', message.createdAt)
+          .addField('Reason', kReason);
 
         let kickChannel = message.guild.channels.find(`name`, 'incidents');
         if(!kickChannel) {
           message.reply('ERROR: Cannot find \"incidents\" channel.');
         } else {
           kickChannel.send(kRichEmbed);
+          kickee.kick(kReason);
         }
       }
     }
