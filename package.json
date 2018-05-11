@@ -1,0 +1,9 @@
+{
+  "name": "wolf-bot",
+  "version": "1.0.0",
+  "description": "A Discord bot.",
+  "main": "bot.js",
+  "repository": "https://github.com/RealCzar/wolf-bot",
+  "author": "RealCzar",
+  "license": "MIT"
+}
