@@ -11,7 +11,7 @@ client.on('ready', () => {
 
 client.on('message', message => {
   if(message.content === prefix + "hello") {
-    message.reply("Hello, " + message.author.tag + "!");
+    message.reply("hello!");
   }
 });
 
