@@ -2,11 +2,20 @@
   "name": "wolf-bot",
   "version": "1.0.0",
   "description": "A Discord bot.",
-  "main": "bot.js",
+  "main": "lib/bot.js",
   "repository": "https://github.com/RealCzar/wolf-bot",
   "author": "RealCzar",
   "license": "MIT",
   "dependencies": {
     "discord.js": "^11.3.2"
+  },
+  "scripts": {
+    "build": "flow-remove-types src/ -d lib/",
+    "prepublish": "yarn run build",
+    "start": "node lib/bot.js"
+  },
+  "devDependencies": {
+    "flow-bin": "^0.72.0",
+    "flow-remove-types": "^1.2.3"
   }
 }
